@@ -404,7 +404,8 @@ class ADExplorerSnapshot(object):
                 continue
             try:
                 sid = self.computersidcache.get(target)
-                computer['AllowedToDelegate'].append(sid)
+                if sid:
+                    computer['AllowedToDelegate'].append(sid)
             except KeyError:
                 if '.' in target:
                     computer['AllowedToDelegate'].append(target.upper())
@@ -540,7 +541,8 @@ class ADExplorerSnapshot(object):
                     continue
                 try:
                     sid = self.computersidcache[target]
-                    user['AllowedToDelegate'].append(sid)
+                    if sid:
+                        user['AllowedToDelegate'].append(sid)
                 except KeyError:
                     if '.' in target:
                         user['AllowedToDelegate'].append(target.upper())
